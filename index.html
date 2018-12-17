@@ -33,8 +33,7 @@ new Vue({
     methods: {
         getCountries() {
             console.log('CURRENCTY API CALLED');
-                
-            axios.get('http://127.0.0.1:8080/countries.json')
+            axios.get('./countries.json')
                 .then(response=>{
                     //console('AXIOS Result : ' + response.data);
                     this.countries = response.data.results;
