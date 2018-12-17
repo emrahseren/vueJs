@@ -13,10 +13,8 @@
         <select v-model="selectedCounrty">
             <option v-for="(counrty, index) in countries" :value="index">{{counrty.name}}</option>
         </select>
-        <p>{{amount}}</p>
         <button @click="getCurrencyId()">CurrencyId</button>
         <p>{{selectedCounrty}}</p>
-            
     </div>
     
 </body>
@@ -35,8 +33,7 @@ new Vue({
     methods: {
         getCountries() {
             console.log('CURRENCTY API CALLED');
-                
-            axios.get('http://127.0.0.1:8080/countries.json')
+            axios.get('./countries.json')
                 .then(response=>{
                     //console('AXIOS Result : ' + response.data);
                     this.countries = response.data.results;
@@ -48,13 +45,16 @@ new Vue({
         }
     },
     mounted() {
-        this.getCountries()
+        console.log('mounted run');
+        this.getCountries();
     },
     created() {
-        console.log('Created');
+        console.log('created run')
         this.getCountries()
     },
-    computed: {}
+    computed: {
+
+    }
 });
 </script>
 </html>
