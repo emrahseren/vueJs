@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueTİTLE</title>
+</head>
+<body>
+    <div id="App">
+        <h1>{{welcome}} - {{date.getFullYear()}}</h1>
+        COUNTRY LIST : 
+        <select v-model="selectedCounrty">
+            <option v-for="(counrty, index) in countries" :value="index">{{counrty.name}}</option>
+        </select>
+        <p>{{amount}}</p>
+        <button @click="getCurrencyId()">CurrencyId</button>
+        <p>{{selectedCounrty}}</p>
+            
+    </div>
+    
+</body>
+<script src="vue.js"></script>
+<script src="axios.min.js"></script>
+<script>
+new Vue({
+    el: '#App',
+    data:({
+        welcome: 'VueJS Web Page, Welcome!',
+        date: new Date(),
+        selectedCounrty:'',
+        countries:{},
+        currencyId:''
+    }),
+    methods: {
+        getCountries() {
+            console.log('CURRENCTY API CALLED');
+                
+            axios.get('http://127.0.0.1:8080/countries.json')
+                .then(response=>{
+                    //console('AXIOS Result : ' + response.data);
+                    this.countries = response.data.results;
+            })    
+        },
+        getCurrencyId(){
+            this.currencyId = 'ddd'
+            //this.countries.get(0).currencyId
+        }
+    },
+    mounted() {
+        this.getCountries()
+    },
+    created() {
+        console.log('Created');
+        this.getCountries()
+    },
+    computed: {}
+});
+</script>
+</html>
