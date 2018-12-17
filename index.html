@@ -13,10 +13,8 @@
         <select v-model="selectedCounrty">
             <option v-for="(counrty, index) in countries" :value="index">{{counrty.name}}</option>
         </select>
-        <p>{{amount}}</p>
         <button @click="getCurrencyId()">CurrencyId</button>
         <p>{{selectedCounrty}}</p>
-            
     </div>
     
 </body>
@@ -48,13 +46,16 @@ new Vue({
         }
     },
     mounted() {
-        this.getCountries()
+        console.log('mounted run');
+        this.getCountries();
     },
     created() {
-        console.log('Created');
+        console.log('created run')
         this.getCountries()
     },
-    computed: {}
+    computed: {
+
+    }
 });
 </script>
 </html>
