@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VueTİTLE</title>
+    <title>VueTitle</title>
 </head>
 <body>
     <div id="App">
         <h1>{{welcome}} - {{date.getFullYear()}}</h1>
-        COUNTRY LIST : 
+        Countries : 
         <select v-model="selectedCounrty">
             <option v-for="(counrty, index) in countries" :value="index">{{counrty.name}}</option>
         </select>
@@ -24,7 +24,7 @@
 new Vue({
     el: '#App',
     data:({
-        welcome: 'VueJS Web Page, Welcome!',
+        welcome: 'Welcome!',
         date: new Date(),
         selectedCounrty:'',
         countries:{},
